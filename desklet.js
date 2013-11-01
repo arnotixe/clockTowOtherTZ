@@ -44,6 +44,7 @@ MyDesklet.prototype = {
 
           this.settings.bindProperty(Settings.BindingDirection.IN, "location", "location", this._settingchange, null);
           this.settings.bindProperty(Settings.BindingDirection.IN, "offset", "offset", this._settingchange, null);
+          this.settings.bindProperty(Settings.BindingDirection.IN, "secson", "secson", this._settingchange, null);
 	  this._settingchange();
 	} 
 	catch (e) {
@@ -52,7 +53,6 @@ MyDesklet.prototype = {
 
         this._hourContainer.add(this._hour);
         this._hourContainer.add(this._min);
-
         this._hourContainer.add(this._sec);
 // should be checkboxed yes/no (visibility CSS?)
 
@@ -61,12 +61,14 @@ MyDesklet.prototype = {
         this._clockContainer.add(this._hourContainer);
         this._clockContainer.add(this._dateContainer);
         this.setContent(this._clockContainer);
-        this.setHeader(_("Clock"));
+        this.setHeader(_("ClockOtherTZ"));
         this._updateDate();
     },
 
     _settingchange: function() {
 	this._location.set_text(this.location);
+	// FIXME style doesn't seem to work in cinnamon javascript. Hacking by setting seconds txt to "" below, if unset checkbox.
+	//this._sec.style.font-size=20;
     },
         
     on_desklet_removed: function() {
@@ -82,6 +84,12 @@ MyDesklet.prototype = {
        this._hour.set_text(displayDate.toLocaleFormat(hourFormat));
        this._min.set_text(displayDate.toLocaleFormat(minFormat));
        this._sec.set_text(displayDate.toLocaleFormat(secFormat));
+
+	if (this.secson) {
+	       this._sec.set_text(displayDate.toLocaleFormat(secFormat));
+	} else {
+	       this._sec.set_text(''); // No seconds
+	}
        this._date.set_text(displayDate.toLocaleFormat(dateFormat));
        this.timeout = Mainloop.timeout_add_seconds(1, Lang.bind(this, this._updateDate));
     }

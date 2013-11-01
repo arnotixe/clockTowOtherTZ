@@ -2,15 +2,20 @@
     "location": {
         "default": "Kristiansand", 
         "type": "entry", 
-        "description" : "Location:"
+        "description" : "Location label"
     },
     "offset": {
         "default": 6,
         "type": "spinbutton",
         "min": -12,
         "max": 12,
-        "description" : "Time offset from local:",
+        "description" : "Time offset from local",
         "units" : "hours",
         "step": 1 
+    },
+    "secson": {
+        "default": true, 
+        "type": "checkbox", 
+        "description" : "Show seconds"
     }
 }
