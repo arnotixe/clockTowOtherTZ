@@ -1,0 +1,7 @@
+{
+    "last-edited": "1370193670", 
+    "description": "A fork desklet that displays the time in +/- some hrs", 
+    "prevent-decorations": false, 
+    "uuid": "clockTowOtherTZ@arnotixe", 
+    "name": "ClockTowOtherTZ desklet"
+}

@@ -1,0 +1,16 @@
+{
+    "location": {
+        "default": "Kristiansand", 
+        "type": "entry", 
+        "description" : "Location:"
+    },
+    "offset": {
+        "default": 6,
+        "type": "spinbutton",
+        "min": -12,
+        "max": 12,
+        "description" : "Time offset from local:",
+        "units" : "hours",
+        "step": 1 
+    }
+}
